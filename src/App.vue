@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { RouterView} from "vue-router"
 </script>
 
 <template>
-  admin-lite
+  <RouterView />
 </template>
 
 <style scoped>
