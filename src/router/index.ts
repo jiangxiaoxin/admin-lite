@@ -3,6 +3,7 @@ import { RouteRecordRaw } from "vue-router"
 import PageA from "@/test/PageA.vue"
 import PageB from "@/test/PageB.vue"
 import PageC from "@/test/PageC.vue"
+import PageD from "@/test/PageD"
 import NotFoundPage from "@/pages/404.vue"
 import LayoutDefault from "@/layout/default.vue"
 import HomeVue from "@/pages/home/index.vue"
@@ -111,7 +112,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         path: 'foo',
-        component: About,
+        component: PageD,
         meta: {
           title: '关于的1级-2'
         }
@@ -134,6 +135,23 @@ const routes: RouteRecordRaw[] = [
     }
   }
 ];
+
+for(let i=0;i<50;i++) {
+  routes.push({
+    path: `/t${i}`,
+    component: LayoutDefault,
+    redirect: `/t${i}/index`,
+    children: [
+      {
+        path: 'index',
+        component: PageD,
+        meta: {
+          title: 't-' + i
+        }
+      }
+    ]
+  })
+}
 
 export const router = VueRouter.createRouter({
   routes: routes,
