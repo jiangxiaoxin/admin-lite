@@ -11,7 +11,6 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { RouterView } from "vue-router"
 
 const count = ref(0)
 

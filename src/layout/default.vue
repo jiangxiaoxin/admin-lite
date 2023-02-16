@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import SideMenu from "@/components/SideMenu.vue"
+import SideMenu from "@/components/SideMenu/index.vue"
 import MainHeader from "@/components/MainHeader/index.vue"
 import MainContent from "@/components/MainContent.vue"
 
