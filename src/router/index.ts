@@ -103,7 +103,7 @@ const routes: RouteRecordRaw[] = [
                 path: 'cc',
                 component: PageC,
                 meta: {
-                  title: '还有1级'
+                  title: '还有1级,这级名字会很长，超过宽度'
                 }
               }
             ]
@@ -136,7 +136,7 @@ const routes: RouteRecordRaw[] = [
   }
 ];
 
-for(let i=0;i<50;i++) {
+for(let i=0;i<5;i++) {
   routes.push({
     path: `/t${i}`,
     component: LayoutDefault,

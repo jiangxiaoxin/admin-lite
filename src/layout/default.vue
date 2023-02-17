@@ -42,8 +42,9 @@ export default defineComponent({
 .layout-left {
   width: 240px;
   height: 100%;
-  overflow: auto;
-  background-color: black;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background-color: #001529; // 跟左侧菜单的背景色一样，不会那么突兀
 }
 
 .layout-right {

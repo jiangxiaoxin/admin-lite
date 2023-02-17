@@ -1,13 +1,12 @@
 <template>
   <div class="toggle-collapse-wrapper" @click.stop="toggleCollapse">
-    <el-icon :size="20">
-      <Expand v-if="expanded"/>
-      <Fold v-else/>
+    <el-icon :size="20" class="toggle-animation" :class="iconCls">
+      <Expand />
     </el-icon>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import { Expand, Fold} from "@element-plus/icons-vue"
 
 export default defineComponent({
@@ -18,9 +17,17 @@ export default defineComponent({
   },
   setup() {
     const expanded = ref(true)
+
+    const iconCls = computed(() => {
+      return {
+        expanded: expanded.value == true,
+        collapsed: expanded.value == false
+      }
+    })
   
     return {
-      expanded
+      expanded,
+      iconCls
     }
   },
   methods: {
@@ -44,5 +51,13 @@ export default defineComponent({
 
 .toggle-collapse-wrapper:hover {
   background: rgb(240,240,240);
+}
+
+.toggle-animation {
+  transition: all 0.3s linear;
+}
+
+.collapsed {
+  transform: rotateZ(180deg);
 }
 </style>
