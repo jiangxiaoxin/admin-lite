@@ -1,8 +1,9 @@
 <template>
   <div class="layout-wrapper">
-    <div class="layout-left">
+    <div class="layout-left" :style="leftStyle">
       <SideMenu />
     </div>
+
     <div class="layout-right">
       <div class="main-header-wrapper">
         <MainHeader />
@@ -15,23 +16,35 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import SideMenu from "@/components/SideMenu/index.vue"
-import MainHeader from "@/components/MainHeader/index.vue"
-import MainContent from "@/components/MainContent.vue"
+import { defineComponent, computed } from "vue";
+import SideMenu from "@/components/SideMenu/index.vue";
+import MainHeader from "@/components/MainHeader/index.vue";
+import MainContent from "@/components/MainContent.vue";
+import { useGlobalStore } from "@/store/global";
 
 export default defineComponent({
-  name: 'LayoutDefault',
+  name: "LayoutDefault",
   components: {
     SideMenu,
     MainHeader,
-    MainContent
-  }
-})
+    MainContent,
+  },
+  setup() {
+    const globalStore = useGlobalStore();
+    const leftStyle = computed(() => {
+      return {
+        width: globalStore.menuExpanded ? "240px" : "64px",
+      };
+    });
+
+    return {
+      leftStyle,
+    };
+  },
+});
 </script>
 
 <style lang="less" scoped>
-
 .layout-wrapper {
   width: 100%;
   height: 100%;
@@ -40,11 +53,11 @@ export default defineComponent({
 }
 
 .layout-left {
-  width: 240px;
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #001529; // 跟左侧菜单的背景色一样，不会那么突兀
+  transition: width 0.3s linear;
 }
 
 .layout-right {
@@ -56,5 +69,4 @@ export default defineComponent({
 .main-content-wrapper {
   height: calc(100% - 50px);
 }
-
 </style>

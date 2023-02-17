@@ -8,6 +8,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
 import { Expand, Fold} from "@element-plus/icons-vue"
+import { useGlobalStore } from "@/store/global"
 
 export default defineComponent({
   name: "ToggleCollapse",
@@ -16,7 +17,11 @@ export default defineComponent({
     Fold
   },
   setup() {
-    const expanded = ref(true)
+    const globalStore = useGlobalStore()
+    const expanded = computed(() => {
+      return globalStore.menuExpanded
+    })
+    
 
     const iconCls = computed(() => {
       return {
@@ -27,12 +32,13 @@ export default defineComponent({
   
     return {
       expanded,
-      iconCls
+      iconCls,
+      globalStore
     }
   },
   methods: {
     toggleCollapse() {
-      this.expanded = !this.expanded
+      this.globalStore.toggleExpanded()
     }
   }
 });

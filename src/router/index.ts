@@ -38,7 +38,8 @@ const routes: RouteRecordRaw[] = [
         path: 'index',
         component: HomeVue,
         meta: {
-          title:'首页2'
+          title:'首页2',
+          icon: "Watermelon"
         }
       }
     ]
@@ -55,7 +56,8 @@ const routes: RouteRecordRaw[] = [
         path: 'index',
         component: Desc,
         meta: {
-          title: '子级的名字'
+          title: '子级的名字',
+          icon: 'Sugar'
         }
       }
     ]
@@ -72,21 +74,24 @@ const routes: RouteRecordRaw[] = [
     redirect: '/about/index',
     meta: {
       title: '关于的根',
-      alwaysShow: true
+      alwaysShow: true,
+      icon: 'Burger'
     },
     children: [
       {
         path: 'index',
         component: About,
         meta: {
-          title:'关于的1级-1'
+          title:'关于的1级-1',
+          icon: 'Grape'
         },
         children: [
           {
             path: 'a',
             component: PageA,
             meta: {
-              title: '关于a'
+              title: '关于a',
+              icon: 'Orange'
             }
           },
           {
@@ -97,13 +102,15 @@ const routes: RouteRecordRaw[] = [
               title: '关于b',
               alwaysShow: true,
               jump: true,
+              icon: 'IceTea'
             },
             children: [
               {
                 path: 'cc',
                 component: PageC,
                 meta: {
-                  title: '还有1级,这级名字会很长，超过宽度'
+                  title: '还有1级,这级名字会很长，超过宽度',
+                  icon: 'Dessert'
                 }
               }
             ]
@@ -114,7 +121,8 @@ const routes: RouteRecordRaw[] = [
         path: 'foo',
         component: PageD,
         meta: {
-          title: '关于的1级-2'
+          title: '关于的1级-2',
+          icon: 'HotWater'
         }
       }
     ]
@@ -146,7 +154,8 @@ for(let i=0;i<5;i++) {
         path: 'index',
         component: PageD,
         meta: {
-          title: 't-' + i
+          title: 't-' + i,
+          icon: 'Food'
         }
       }
     ]
